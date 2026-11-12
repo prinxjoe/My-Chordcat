@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>J Prince ChordCat</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app" id="app">
+
+<header class="topbar">
+  <div>
+    <div class="brand">J Prince ChordCat</div>
+    <div class="subtitle">J PRINCE MUSIC HUB · MIDI WORKSTATION</div>
+  </div>
+  <div class="status" id="midiStatus">● MIDI keyboard not connected</div>
+</header>
+
+<nav class="toolbar">
+  <button id="connect">Connect MIDI Keyboard</button>
+  <select id="midiIn"><option value="all">All MIDI inputs</option></select>
+  <button id="clear">Clear History</button>
+  <button id="saveChords">Save Chords</button>
+  <button id="audioRec">● Record Audio</button>
+  <label for="layout">Video layout</label>
+  <select id="layout">
+    <option value="landscape">YouTube / Facebook (16:9)</option>
+    <option value="portrait">TikTok / Reels / Shorts (9:16)</option>
+    <option value="square">Square post (1:1)</option>
+  </select>
+  <button id="record">Record Screen</button>
+  <button id="stop" disabled>Stop &amp; Save Video</button>
+  <span class="spacer"></span>
+  <button id="about">About</button>
+</nav>
+
+<section class="instruments" id="instruments"></section>
+
+<section class="panel controls">
+  <div class="ctl-group">
+    <span class="panel-title">MASTER</span>
+    <input type="range" id="masterVol" min="0" max="100" value="80">
+    <button id="masterMute">Mute</button>
+    <button id="allDn">Decrease All −</button>
+    <button id="allUp">Increase All +</button>
+  </div>
+  <div class="ctl-group">
+    <span class="panel-title">LAYERS</span>
+    <button class="layer" data-n="1">Single</button>
+    <button class="layer" data-n="2">Dual</button>
+    <button class="layer" data-n="3">Triple</button>
+    <button class="layer" data-n="4">Quad</button>
+  </div>
+  <div class="ctl-group">
+    <span class="panel-title">OCTAVE</span>
+    <button id="octDn">−</button><b id="octVal">0</b><button id="octUp">+</button>
+    <button id="sustainBtn">Sustain: OFF</button>
+  </div>
+  <div class="ctl-group presets" id="presets"></div>
+</section>
+
+<main class="workspace">
+  <aside class="sidebar">
+    <section class="panel">
+      <h2 class="panel-title">MUSICAL STAFF</h2>
+      <svg class="staff" viewBox="0 0 240 150" aria-label="Musical staff">
+        <text x="5" y="25" font-size="22" fill="#ddd">𝄞</text>
+        <g id="staffLines">
+          <line x1="12" y1="45" x2="230" y2="45"/><line x1="12" y1="60" x2="230" y2="60"/>
+          <line x1="12" y1="75" x2="230" y2="75"/><line x1="12" y1="90" x2="230" y2="90"/>
+          <line x1="12" y1="105" x2="230" y2="105"/>
+        </g>
+        <g id="staffNotes"></g>
+      </svg>
+      <p class="panel-title">NOTES PLAYED</p>
+      <div class="side-notes" id="sideNotes">—</div>
+    </section>
+  </aside>
+
+  <section class="main-column">
+    <section class="panel main-chord">
+      <div class="chord-label">CURRENT CHORD</div>
+      <h1 id="chordName">Ready to Play</h1>
+      <div id="noteNames">Connect your MIDI keyboard and play a chord.</div>
+    </section>
+    <section class="panel">
+      <div class="history-title">
+        <span>CHORD HISTORY</span>
+        <span id="count">0 chords saved</span>
+      </div>
+      <ol id="historyList"><li class="empty">Your played chords will appear here.</li></ol>
+    </section>
+  </section>
+</main>
+
+<div class="keyboard-dock">
+  <div class="keyboard-heading">
+    <span>88-KEY PIANO · A0 – C8</span>
+    <span id="liveLabel">READY</span>
+  </div>
+  <div class="keyboard" id="keyboard"></div>
+  <div class="statusbar">
+    <span id="stAudio">Audio Engine: Not Ready</span>
+    <span id="stMidi">MIDI Keyboard: Disconnected</span>
+    <span id="stOut">Audio Output: —</span>
+    <span id="stSamples">Samples: Not loaded</span>
+    <span id="stKeys">Keys: —</span>
+  </div>
+</div>
+
+</div>
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>-->
+<!--<script>window.Tone || document.write('<script src="https://cdn.jsdelivr.net/npm/tone@14.8.49/build/Tone.js"><\/script>')</script>-->
+<script src="Tone.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
